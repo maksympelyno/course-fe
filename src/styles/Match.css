@@ -1,0 +1,43 @@
+.match-container {
+  padding: 20px;
+  font-size: 24px;
+  color: white;
+}
+
+.season-heading {
+  text-align: center;
+}
+
+.matches-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.match-item {
+  width: 90%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #5b4c6b;
+  border-radius: 5px;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.team {
+  flex: 1;
+  text-align: center;
+  font-weight: bold;
+}
+
+.match-details {
+  flex: 1;
+  text-align: center;
+}
+
+.stadium,
+.date {
+  font-size: 18px;
+  color: #e0c1c1;
+}

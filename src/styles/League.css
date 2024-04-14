@@ -1,0 +1,38 @@
+.center-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.league-heading {
+  font-size: 24px;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.league-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.league-item {
+  margin-bottom: 10px;
+  border: 2px solid #6a0dad; /* Клас для рамки */
+  border-radius: 5px;
+}
+
+.league-link {
+  display: inline-block;
+  padding: 10px 20px;
+  color: #6a0dad;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+.league-link:hover {
+  background-color: #6a0dad;
+  color: #fff;
+}

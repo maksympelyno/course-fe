@@ -1,24 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { LeagueProvider } from "./context/LeagueContext";
+import Home from "./components/Home";
+import League from "./components/League";
+import Season from "./components/Season";
+import "./App.css";
+import Match from "./components/Match";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <LeagueProvider>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" index element={<Home />} />
+          <Route path="/league" element={<League />} />
+          <Route path="/season" element={<Season />} />
+          <Route path="/match" element={<Match />} />
+        </Routes>
+      </BrowserRouter>
+    </LeagueProvider>
   );
 }
 
