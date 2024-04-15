@@ -1,0 +1,47 @@
+.search-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 50px; /* Збільшуємо відстань від верхнього краю */
+}
+
+.search-input {
+  padding: 15px; /* Збільшуємо висоту введення */
+  margin-right: 10px;
+  border: 2px solid #ccc; /* Збільшуємо ширину рамки */
+  border-radius: 8px;
+  font-size: 18px; /* Збільшуємо розмір тексту */
+}
+
+.search-button {
+  padding: 15px 30px; /* Збільшуємо висоту та ширину кнопки */
+  margin-top: 10px; /* Збільшуємо відстань від інпуту до кнопки */
+  background-color: #4b0082;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 18px; /* Збільшуємо розмір тексту */
+}
+
+.search-button:hover {
+  background-color: #5a2d91;
+}
+
+.player-item {
+  display: flex;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.player-item img {
+  width: 70px; /* Збільшуємо розмір фото */
+  height: 70px;
+  border-radius: 50%;
+  margin-right: 20px;
+}
+
+.player-item div {
+  font-size: 18px; /* Збільшуємо розмір тексту */
+}

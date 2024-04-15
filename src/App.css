@@ -1,0 +1,28 @@
+.header {
+  background-color: #4b0082; /* фіолетовий колір */
+  color: white;
+  padding: 20px 20px;
+}
+
+.nav-list {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  text-align: center; /* вирівнюємо по центру */
+}
+
+.nav-item {
+  display: inline;
+  margin-right: 45px;
+}
+
+.nav-link {
+  color: white;
+  text-decoration: none;
+  font-weight: bold; /* зробимо текст жирним */
+  font-size: 24px;
+}
+
+.nav-link:hover {
+  text-decoration: underline;
+}

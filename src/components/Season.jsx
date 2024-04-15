@@ -9,7 +9,11 @@ const Season = () => {
   const [seasons, setSeasons] = useState([]);
 
   useEffect(() => {
-    getData(selectedLeague.league_id);
+    try {
+      getData(selectedLeague.league_id);
+    } catch (error) {
+      console.log(error);
+    }
   }, [selectedLeague]);
 
   const getData = (league_id) => {
