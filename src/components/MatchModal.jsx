@@ -1,9 +1,16 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { getMatchStatisticsData } from "../services/MatchStatisticsService";
+import { Link } from "react-router-dom";
 import "../styles/MatchModal.css";
+import { LeagueContext } from "../context/LeagueContext";
 
 const MatchModal = ({ match, onClose }) => {
   const [matchStatistics, setMatchStatistics] = useState({});
+  const { setSelectedTeam } = useContext(LeagueContext);
+
+  const handleTeamSelect = (team) => {
+    setSelectedTeam(team);
+  };
 
   useEffect(() => {
     if (match) {
@@ -34,13 +41,24 @@ const MatchModal = ({ match, onClose }) => {
 
         <div className="matches-container">
           <div className="match-item">
-            <div className="team">{match.homeTeam.name}</div>
+            <div className="team">
+              {" "}
+              <Link to="/team" onClick={() => handleTeamSelect(match.homeTeam)} className="team-link">
+                {match.homeTeam.name}{" "}
+              </Link>
+            </div>
+
             <div className="match-details">
               <div className="team">
                 {matchStatistics.hometeam_score}:{matchStatistics.awayteam_score}
               </div>
             </div>
-            <div className="team">{match.awayTeam.name}</div>
+
+            <div className="team">
+              <Link to="/team" onClick={() => handleTeamSelect(match.awayTeam)} className="team-link">
+                {match.awayTeam.name}
+              </Link>
+            </div>
           </div>
           <div className="stats-item">
             <div className="team">{matchStatistics.possession}</div>

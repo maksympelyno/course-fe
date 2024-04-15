@@ -6,6 +6,7 @@ import League from "./components/League";
 import Season from "./components/Season";
 import "./App.css";
 import Match from "./components/Match";
+import Team from "./components/Team";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
           <Route path="/league" element={<League />} />
           <Route path="/season" element={<Season />} />
           <Route path="/match" element={<Match />} />
+          <Route path="/team" element={<Team />} />
         </Routes>
       </BrowserRouter>
     </LeagueProvider>
