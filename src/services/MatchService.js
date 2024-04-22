@@ -11,3 +11,20 @@ export const getMatchData = async (seasonId) => {
     throw error;
   }
 };
+
+export const createMatch = async ({ season_id, hometeam_id, awayteam_id, stadium, date }) => {
+  const data = {
+    season_id,
+    hometeam_id,
+    awayteam_id,
+    stadium,
+    date,
+  };
+
+  try {
+    await axios.post(API_URL, data);
+    return true;
+  } catch (error) {
+    throw error;
+  }
+};

@@ -1,0 +1,44 @@
+.full-page-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+  margin: 20px; /* Додано відступи між колонками */
+  height: 40%;
+}
+
+.button {
+  font-size: 20px; /* Зменшено розмір шрифту */
+  font-weight: bold;
+  border: none;
+  background-color: #4b0082; /* зелений колір */
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  cursor: pointer;
+  border-radius: 15px; /* Збільшуємо радіус кутів */
+  width: 80%; /* Зменшено ширину кнопок */
+  height: 100%;
+  box-sizing: border-box; /* Включення внутрішніх відступів у загальну ширину */
+  transition-duration: 0.4s;
+}
+
+.button:hover {
+  background-color: #3f016c; /* темнозелений колір при наведенні */
+}

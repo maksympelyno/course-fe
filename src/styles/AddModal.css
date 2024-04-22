@@ -1,0 +1,137 @@
+.modal {
+  display: block;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-window {
+  background-color: #4b0082; /* фіолетовий колір */
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 50%;
+  height: 75%; /* збільшена висота */
+  border-radius: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  width: 95%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 2rem;
+  padding-top: 2rem;
+}
+
+.close {
+  color: #362f40; /* фіолетовий колір */
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  position: absolute;
+  right: 0;
+  top: 0;
+  margin-right: 1.5rem;
+  margin-top: 0.5rem;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.label {
+  display: inline-block;
+  width: 30%;
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.property-section {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.head-text {
+  font-size: 24px;
+  font-weight: bold;
+  color: #534764; /* фіолетовий колір */
+}
+
+.text-input {
+  width: 35%;
+  height: 2rem; /* збільшена висота */
+  border-radius: 1rem;
+  border: 1px solid #7d7979;
+  padding: 0.25rem;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  font-size: 16px;
+  color: #534764; /* фіолетовий колір */
+}
+.text-select {
+  width: 35%;
+  border-radius: 1rem;
+  border: 1px solid #7d7979;
+  padding: 0.25rem;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  font-size: 16px;
+  color: #534764; /* фіолетовий колір */
+}
+.text-style {
+  color: #534764; /* фіолетовий колір */
+}
+.button-modal {
+  width: 20%;
+  height: 2.5rem; /* збільшена висота */
+  padding: 0.25rem;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  border-radius: 1rem;
+  border: 1px solid #7d7979;
+  font-size: 16px;
+  background-color: #4b0082; /* фіолетовий колір */
+  color: #ffffff; /* фіолетовий колір */
+  font-weight: bold;
+}
+.button-modal:hover {
+  background-color: #3b0363;
+  cursor: pointer;
+}
+
+/* Стилі для опцій у випадаючих списках */
+select {
+  height: 3rem; /* збільшена висота */
+
+  color: #534764; /* фіолетовий колір */
+  border-radius: 1rem;
+  border: 1px solid #7d7979;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+}
+
+option {
+  height: 2rem;
+  color: #534764; /* Колір тексту */
+  background-color: #ffffff; /* Колір фону */
+  padding: 0.5rem; /* Відступи всередині опцій */
+}

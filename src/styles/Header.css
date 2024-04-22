@@ -1,0 +1,64 @@
+.header {
+  background-color: #4b0082; /* фіолетовий колір */
+  color: white;
+  padding: 10px 10px;
+  display: flex;
+  justify-content: space-between; /* Рівномірний розподіл простору між елементами */
+  align-items: center; /* Вирівнюємо елементи по вертикалі по центру */
+}
+
+.nav-list {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  text-align: center; /* вирівнюємо по центру */
+}
+
+.nav-item {
+  display: inline;
+  margin-right: 45px;
+}
+
+.nav-link {
+  color: white;
+  text-decoration: none;
+  font-weight: bold; /* зробимо текст жирним */
+  font-size: 24px;
+}
+
+.nav-link:hover {
+  text-decoration: none;
+}
+
+/* .logout-button button {
+  background-color: transparent;
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: bold;
+} */
+
+.logout-button {
+  padding: 10px;
+  background-color: #4b0082; /* змінимо колір кнопки виходу */
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 10px;
+  font-weight: bold;
+}
+
+.logout-container {
+  display: flex;
+  align-items: center; /* Вирівнюємо елементи по вертикалі */
+}
+
+.username {
+  background-color: #3f026a;
+  margin-right: 20px;
+  padding: 4px;
+  font-size: 16px;
+  font-weight: bold;
+}

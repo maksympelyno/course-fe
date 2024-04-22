@@ -1,0 +1,58 @@
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #4b0082; /* фіолетовий колір */
+}
+
+.login-form-container {
+  background-color: #fff; /* білий фон форми */
+  padding: 40px;
+  border-radius: 8px;
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1); /* тінь */
+  width: 400px;
+}
+
+.login-heading {
+  text-align: center;
+  color: #4b0082; /* фіолетовий колір заголовку */
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.login-subheading {
+  text-align: center;
+  color: #555; /* колір підзаголовку */
+  font-size: 16px;
+  margin-bottom: 20px;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.login-input {
+  padding: 12px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc; /* колір рамки */
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+.login-button {
+  padding: 12px;
+  background-color: #4b0082; /* фіолетовий колір кнопки */
+  color: #fff; /* колір тексту кнопки */
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  font-size: 16px;
+}
+
+.login-button:hover {
+  background-color: #4d0875; /* зміна кольору кнопки при наведенні */
+}

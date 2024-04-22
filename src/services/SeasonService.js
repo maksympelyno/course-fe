@@ -11,3 +11,12 @@ export const getSeasonData = async (id) => {
     console.error("Error fetching league data:", error);
   }
 };
+
+export const getAllSeason = async () => {
+  try {
+    const response = await axios.get(`${API_URL}`);
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching league data:", error);
+  }
+};
