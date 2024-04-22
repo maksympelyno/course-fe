@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import "../styles/AddPage.css";
 import AddMatchModal from "./AddMatchModal";
+import AddMatchStatModal from "./AddMatchStatModal";
 import { ToastContainer } from "react-toastify";
 const AddPage = () => {
   const [showMatchModal, setShowMatchModal] = useState(false);
+  const [showMatchStatsModal, setShowMatchStatsModal] = useState(false);
 
   return (
     <div className="full-page-container">
@@ -14,7 +16,9 @@ const AddPage = () => {
           </button>
         </div>
         <div className="column">
-          <button className="button">Add match statistics</button>
+          <button className="button" onClick={() => setShowMatchStatsModal(true)}>
+            Add match statistics
+          </button>
         </div>
       </div>
       <div className="row">
@@ -26,6 +30,7 @@ const AddPage = () => {
         </div>
       </div>
       {showMatchModal && <AddMatchModal onClose={() => setShowMatchModal(false)} />}
+      {showMatchStatsModal && <AddMatchStatModal onClose={() => setShowMatchStatsModal(false)} />}
       <ToastContainer />
     </div>
   );

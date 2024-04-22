@@ -33,8 +33,8 @@ const MatchModal = ({ match, onClose }) => {
   }
 
   return (
-    <div className="modal">
-      <div className="modal-content">
+    <div className="modal-match">
+      <div className="modal-content-match">
         <span className="close-button" onClick={onClose}>
           ×
         </span>

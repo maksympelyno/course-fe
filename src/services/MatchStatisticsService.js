@@ -11,3 +11,27 @@ export const getMatchStatisticsData = async (matchId) => {
     throw error;
   }
 };
+
+export const createMatchStatistics = async ({
+  match_id,
+  hometeam_score,
+  awayteam_score,
+  possession,
+  hometeam_shot,
+  awayteam_shot,
+}) => {
+  const data = {
+    matchId: match_id,
+    homeTeamScore: hometeam_score,
+    awayTeamScore: awayteam_score,
+    possession,
+    homeTeamShot: hometeam_shot,
+    awayTeamShot: awayteam_shot,
+  };
+  try {
+    await axios.post(API_URL, data);
+    return true;
+  } catch (error) {
+    throw error;
+  }
+};
