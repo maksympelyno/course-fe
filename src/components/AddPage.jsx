@@ -21,14 +21,7 @@ const AddPage = () => {
           </button>
         </div>
       </div>
-      <div className="row">
-        <div className="column">
-          <button className="button">Add league</button>
-        </div>
-        <div className="column">
-          <button className="button">Add season</button>
-        </div>
-      </div>
+
       {showMatchModal && <AddMatchModal onClose={() => setShowMatchModal(false)} />}
       {showMatchStatsModal && <AddMatchStatModal onClose={() => setShowMatchStatsModal(false)} />}
       <ToastContainer />

@@ -35,3 +35,27 @@ export const createMatchStatistics = async ({
     throw error;
   }
 };
+
+export const editMatchStatistics = async ({ matchstatistics_id, ...matchData }) => {
+  try {
+    await axios.put(`${API_URL}/${matchstatistics_id}`, matchData);
+    return true;
+  } catch (error) {
+    throw error;
+  }
+};
+
+export const deleteMatchStatistics = async (matchStatId) => {
+  try {
+    const role = sessionStorage.getItem("username");
+    const response = await axios.delete(`${API_URL}/${matchStatId}`, {
+      headers: {
+        Role: role.toLowerCase(),
+      },
+    });
+    return response.data;
+  } catch (error) {
+    console.error("Error deleting search result:", error);
+    throw new Error("Something went wrong while deleting search result");
+  }
+};

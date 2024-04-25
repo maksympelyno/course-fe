@@ -1,32 +1,15 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import "../styles/AddModal.css";
-import { createMatchStatistics } from "../services/MatchStatisticsService";
-import { getMatchesWithoutStatistics } from "../services/MatchService";
+import { editMatchStatistics } from "../services/MatchStatisticsService";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-const AddMatchStatModal = ({ onClose }) => {
-  const [matches, setMatches] = useState([]);
-
+const EditMatchStatModal = ({ onClose, matchStatistics }) => {
   const [matchStats, setMatchStats] = useState({
-    match_id: "",
-    hometeam_score: "",
-    awayteam_score: "",
-    possession: "",
-    hometeam_shot: "",
-    awayteam_shot: "",
+    ...matchStatistics,
   });
-  useEffect(() => {
-    getMatchesWithoutStatistics()
-      .then((data) => {
-        setMatches(data);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }, []);
 
-  const handleAdd = async () => {
+  const handleEdit = async () => {
     try {
       if (
         matchStats.match_id === "" ||
@@ -40,15 +23,15 @@ const AddMatchStatModal = ({ onClose }) => {
           position: toast.POSITION.BOTTOM_RIGHT,
         });
       } else {
-        await createMatchStatistics(matchStats);
-        toast.success("Match statistics added successfully.", {
+        await editMatchStatistics(matchStats);
+        toast.success("Match statistics editted successfully.", {
           position: toast.POSITION.BOTTOM_RIGHT,
         });
         onClose(false);
       }
     } catch (error) {
       console.error("Error:", error);
-      toast.error("Error occurred while adding match statistics.", {
+      toast.error("Error occurred while editting match statistics.", {
         position: toast.POSITION.BOTTOM_RIGHT,
       });
     }
@@ -62,24 +45,8 @@ const AddMatchStatModal = ({ onClose }) => {
             &times;
           </span>
           <div className="modal-content">
-            <p className="head-text text-style">Add Match Statistics</p>
-            <div className="property-section">
-              <label className="label text-style">Match</label>
-              <select
-                className="text-select text-style"
-                value={matches.match_id}
-                onChange={(e) => setMatchStats({ ...matchStats, match_id: e.target.value })}
-              >
-                <option value="">Select Match</option>
-                {matches.map((match, index) => (
-                  <option key={index} value={match.match_id}>
-                    {match.home_team_name}:{match.away_team_name}
-                    {"   "}
-                    {match.season_name}
-                  </option>
-                ))}
-              </select>
-            </div>
+            <p className="head-text text-style">Edit Match Statistics</p>
+
             <div className="property-section">
               <label className="label text-style">Home Team Score:</label>
               <input
@@ -131,8 +98,8 @@ const AddMatchStatModal = ({ onClose }) => {
                 onChange={(e) => setMatchStats({ ...matchStats, awayteam_shot: e.target.value })}
               />
             </div>
-            <button className="button-modal text-style" onClick={handleAdd}>
-              Add
+            <button className="button-modal text-style" onClick={handleEdit}>
+              Edit
             </button>
           </div>
         </div>
@@ -141,4 +108,4 @@ const AddMatchStatModal = ({ onClose }) => {
   );
 };
 
-export default AddMatchStatModal;
+export default EditMatchStatModal;

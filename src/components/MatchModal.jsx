@@ -1,5 +1,7 @@
 import React, { useState, useEffect, useContext } from "react";
-import { getMatchStatisticsData } from "../services/MatchStatisticsService";
+import { toast } from "react-toastify";
+import { getMatchStatisticsData, deleteMatchStatistics } from "../services/MatchStatisticsService";
+import EditMatchStatModal from "./EditMatchStatModal";
 import { Link } from "react-router-dom";
 import "../styles/MatchModal.css";
 import { LeagueContext } from "../context/LeagueContext";
@@ -7,22 +9,39 @@ import { LeagueContext } from "../context/LeagueContext";
 const MatchModal = ({ match, onClose }) => {
   const [matchStatistics, setMatchStatistics] = useState({});
   const { setSelectedTeam } = useContext(LeagueContext);
+  const [showMatchStatsModal, setShowMatchStatsModal] = useState(false);
+
+  const username = sessionStorage.getItem("username");
 
   const handleTeamSelect = (team) => {
     setSelectedTeam(team);
+  };
+
+  const handleDelete = (id) => {
+    deleteMatchStatistics(id)
+      .then((data) => {
+        toast.success("Match statistics deleted successfully.", {
+          position: toast.POSITION.BOTTOM_RIGHT,
+        });
+      })
+      .catch((error) => {
+        toast.error("Cannot delete, try again.", {
+          position: toast.POSITION.BOTTOM_RIGHT,
+        });
+      });
+    onClose();
   };
 
   useEffect(() => {
     if (match) {
       getData(match.match_id);
     }
-  }, [match]);
+  }, [match, showMatchStatsModal]);
 
   const getData = (match_id) => {
     getMatchStatisticsData(match_id)
       .then((data) => {
         setMatchStatistics(...data);
-        console.log(data);
       })
       .catch((error) => {
         console.log(error);
@@ -78,8 +97,21 @@ const MatchModal = ({ match, onClose }) => {
             <div className="stadium">{match.stadium}</div>
             <div className="date">{new Date(match.date).toLocaleString()}</div>
           </div>
+          {username === "admin" && (
+            <div className="button-container">
+              <button className="edit-button" onClick={() => setShowMatchStatsModal(true)}>
+                Edit 📝
+              </button>
+              <button className="delete-button" onClick={() => handleDelete(matchStatistics.matchstatistics_id)}>
+                Delete ❌
+              </button>
+            </div>
+          )}
         </div>
       </div>
+      {showMatchStatsModal && (
+        <EditMatchStatModal onClose={() => setShowMatchStatsModal(false)} matchStatistics={matchStatistics} />
+      )}
     </div>
   );
 };

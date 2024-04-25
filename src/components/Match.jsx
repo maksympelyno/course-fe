@@ -2,6 +2,7 @@ import React, { useContext, useState, useEffect } from "react";
 import { LeagueContext } from "../context/LeagueContext";
 import { getMatchData } from "../services/MatchService";
 import { Link } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
 
 import MatchModal from "./MatchModal";
 import "../styles/Match.css";
@@ -34,6 +35,8 @@ const Match = () => {
 
   return (
     <div className="match-container">
+      <ToastContainer />
+
       <h2 className="season-heading">Season: {selectedSeason ? selectedSeason.name : "No season selected"}</h2>
       <div className="matches-container">
         {matches.map((match) => (
