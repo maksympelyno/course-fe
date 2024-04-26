@@ -11,6 +11,7 @@ import Header from "./components/Header";
 import Login from "./components/Login";
 import AddPage from "./components/AddPage";
 import NotFound from "./components/NotFound";
+import Statistics from "./components/Statistics";
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -33,6 +34,7 @@ function App() {
               <Route path="/match" element={<Match />} />
               <Route path="/team" element={<Team />} />
               <Route path="/search" element={<Search />} />
+              <Route path="/statistics" element={<Statistics />} />
               {isAdmin && <Route path="/add" element={<AddPage />} />}
               <Route path="*" element={<NotFound />} />
             </Routes>

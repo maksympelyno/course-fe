@@ -7,6 +7,24 @@ export const getTeamBySeason = async (seasonId) => {
     const response = await axios.get(`${API_URL}?seasonId=${seasonId}`);
     return response.data;
   } catch (error) {
-    console.error("Error fetching league data:", error);
+    console.error("Error fetching team data:", error);
+  }
+};
+
+export const getTeamWinner = async () => {
+  try {
+    const response = await axios.get(`${API_URL}/winner`);
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching team data:", error);
+  }
+};
+
+export const getTeamLoser = async () => {
+  try {
+    const response = await axios.get(`${API_URL}/loser`);
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching team data:", error);
   }
 };

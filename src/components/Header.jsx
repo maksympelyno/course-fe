@@ -24,12 +24,19 @@ const Header = ({ onLogin }) => {
               Search
             </Link>
           </li>
-          {username === "admin" && ( // Додано умовний оператор тут
-            <li className="nav-item">
-              <Link to="/add" className="nav-link">
-                Add
-              </Link>
-            </li>
+          {username === "admin" && (
+            <>
+              <li className="nav-item">
+                <Link to="/add" className="nav-link">
+                  Add
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link to="/statistics" className="nav-link">
+                  Statistics
+                </Link>
+              </li>
+            </>
           )}
         </ul>
       </nav>
