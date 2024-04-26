@@ -24,7 +24,9 @@
   padding: 10px;
   margin-bottom: 10px;
 }
-
+.button-container {
+  margin-bottom: 10px;
+}
 .team {
   flex: 1;
   text-align: center;
@@ -45,4 +47,19 @@
 .team-link {
   color: white;
   text-decoration: none;
+}
+
+.download-button {
+  background-color: #4b0082; /* фіолетовий */
+  color: #ffffff; /* білий */
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-right: 5px;
+}
+
+.download-button:hover {
+  background-color: #48086a; /* темно-фіолетовий при наведенні */
 }
