@@ -37,7 +37,7 @@ const Season = () => {
       </h2>
       <ul className="season-list">
         {seasons.map((season) => (
-          <li key={season.id} className="season-item">
+          <li key={season.season_id} className="season-item">
             <Link to={`/match`} className="season-link" onClick={() => handleSeasonSelect(season)}>
               {season.name}
             </Link>

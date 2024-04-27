@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { ToastContainer, toast } from "react-toastify";
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
 import { Pie } from "react-chartjs-2";
 import { getTeamLoser, getTeamWinner } from "../services/TeamService";
@@ -50,18 +51,22 @@ const Statistics = () => {
   const getSearchData = (query) => {
     getTeamStatsChart(query)
       .then((dataSearch) => {
-        setChartData((prevState) => ({
-          ...prevState,
-          datasets: [
-            {
-              ...prevState.datasets[0], // зберігаємо інші властивості датасету без змін
-              data: [dataSearch[0].wins, dataSearch[0].losses, dataSearch[0].draws], // оновлюємо дані
-            },
-          ],
-        }));
+        if (!isNaN(dataSearch[0].wins)) {
+          setChartData((prevState) => ({
+            ...prevState,
+            datasets: [
+              {
+                ...prevState.datasets[0], // зберігаємо інші властивості датасету без змін
+                data: [dataSearch[0].wins, dataSearch[0].losses, dataSearch[0].draws], // оновлюємо дані
+              },
+            ],
+          }));
+        }
       })
       .catch((error) => {
-        console.log(error);
+        toast.error("Something went wrong.", {
+          position: toast.POSITION.BOTTOM_RIGHT,
+        });
       });
   };
 
@@ -71,6 +76,7 @@ const Statistics = () => {
 
   return (
     <div className={styles.container}>
+      <ToastContainer />
       <div className={styles.row}>
         <div className={styles.header}>
           <div className={styles.headerContent}>

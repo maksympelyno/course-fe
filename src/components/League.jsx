@@ -30,7 +30,7 @@ const League = () => {
       <h2 className="league-heading">Leagues</h2>
       <div className="league-list">
         {leagues.map((league) => (
-          <div key={league.id} className="league-item">
+          <div key={league.league_id} className="league-item">
             <Link to="/season" className="league-link" onClick={() => handleLeagueSelect(league)}>
               {league.name}
             </Link>

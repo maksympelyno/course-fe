@@ -4,7 +4,12 @@ const API_URL = "http://localhost:3001/match-stats";
 
 export const getMatchStatisticsData = async (matchId) => {
   try {
-    const response = await axios.get(`${API_URL}?matchId=${matchId}`);
+    const role = sessionStorage.getItem("username");
+    const response = await axios.get(`${API_URL}?matchId=${matchId}`, {
+      headers: {
+        Role: role.toLowerCase(),
+      },
+    });
     return response.data;
   } catch (error) {
     console.error("Error fetching match data:", error);
@@ -20,6 +25,7 @@ export const createMatchStatistics = async ({
   hometeam_shot,
   awayteam_shot,
 }) => {
+  const role = sessionStorage.getItem("username");
   const data = {
     matchId: match_id,
     homeTeamScore: hometeam_score,
@@ -29,7 +35,11 @@ export const createMatchStatistics = async ({
     awayTeamShot: awayteam_shot,
   };
   try {
-    await axios.post(API_URL, data);
+    await axios.post(API_URL, data, {
+      headers: {
+        Role: role.toLowerCase(),
+      },
+    });
     return true;
   } catch (error) {
     throw error;
@@ -38,7 +48,12 @@ export const createMatchStatistics = async ({
 
 export const editMatchStatistics = async ({ matchstatistics_id, ...matchData }) => {
   try {
-    await axios.put(`${API_URL}/${matchstatistics_id}`, matchData);
+    const role = sessionStorage.getItem("username");
+    await axios.put(`${API_URL}/${matchstatistics_id}`, matchData, {
+      headers: {
+        Role: role.toLowerCase(),
+      },
+    });
     return true;
   } catch (error) {
     throw error;

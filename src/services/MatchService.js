@@ -5,7 +5,12 @@ const API_URL = "http://localhost:3001/match";
 
 export const getMatchData = async (seasonId) => {
   try {
-    const response = await axios.get(`${API_URL}?seasonId=${seasonId}`);
+    const role = sessionStorage.getItem("username");
+    const response = await axios.get(`${API_URL}?seasonId=${seasonId}`, {
+      headers: {
+        Role: role.toLowerCase(),
+      },
+    });
     return response.data;
   } catch (error) {
     console.error("Error fetching match data:", error);
@@ -15,7 +20,12 @@ export const getMatchData = async (seasonId) => {
 
 export const getMatchesWithoutStatistics = async () => {
   try {
-    const response = await axios.get(`http://localhost:3001/match/withoutStats`);
+    const role = sessionStorage.getItem("username");
+    const response = await axios.get(`http://localhost:3001/match/withoutStats`, {
+      headers: {
+        Role: role.toLowerCase(),
+      },
+    });
     return response.data;
   } catch (error) {
     console.error("Error fetching match data:", error);
@@ -24,11 +34,15 @@ export const getMatchesWithoutStatistics = async () => {
 };
 
 export const createMatch = async ({ season_id, hometeam_id, awayteam_id, stadium, date }) => {
+  const role = sessionStorage.getItem("username");
   const data = { season_id, hometeam_id, awayteam_id, stadium, date };
-  console.log(data);
 
   try {
-    await axios.post(API_URL, data);
+    await axios.post(API_URL, data, {
+      headers: {
+        Role: role.toLowerCase(),
+      },
+    });
     return true;
   } catch (error) {
     throw error;
@@ -52,6 +66,7 @@ export const deleteMatch = async (matchId) => {
 
 export const createAndDownloadFile = async (fileType) => {
   try {
+    const role = sessionStorage.getItem("username");
     let endpoint = `${API_URL}/create-pdf`;
     let fileName = "matches.pdf";
     let responseType = "application/pdf";
@@ -62,9 +77,16 @@ export const createAndDownloadFile = async (fileType) => {
       responseType = "application/json";
     }
 
-    await axios.post(endpoint);
+    await axios.post(endpoint, {
+      headers: {
+        Role: role.toLowerCase(),
+      },
+    });
     const res = await axios.get(`${API_URL}/fetch-${fileType}`, {
       responseType: "blob",
+      headers: {
+        Role: role.toLowerCase(),
+      },
     });
     const fileBlob = new Blob([res.data], {
       type: `aplication/${responseType}`,

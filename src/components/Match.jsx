@@ -11,8 +11,20 @@ const Match = () => {
   const { selectedSeason, setSelectedTeam } = useContext(LeagueContext);
   const [matches, setMatches] = useState([]);
   const [selectedMatch, setSelectedMatch] = useState(null);
+  const [sortByDate, setSortByDate] = useState(true); // State to toggle sorting by date ascending
 
   const username = sessionStorage.getItem("username");
+
+  const handleSortByDate = () => {
+    setSortByDate(!sortByDate);
+    const sortedMatches = [...matches]; // Копіюємо масив матчів, щоб не мутувати оригінальний
+    if (sortByDate) {
+      sortedMatches.sort((a, b) => new Date(a.date) - new Date(b.date));
+    } else {
+      sortedMatches.sort((a, b) => new Date(b.date) - new Date(a.date));
+    }
+    setMatches(sortedMatches);
+  };
 
   const handleTeamSelect = (team) => {
     setSelectedTeam(team);
@@ -54,7 +66,7 @@ const Match = () => {
   const handleDownloadPDF = async () => {
     try {
       await createAndDownloadFile("pdf");
-      toast.success("Products downloaded successfully");
+      toast.success("Matches downloaded successfully");
     } catch (error) {
       console.error("Error downloading PDF:", error);
       toast.error(error.response?.data?.message || "Error downloading PDF");
@@ -63,7 +75,7 @@ const Match = () => {
   const handleDownloadJSON = async () => {
     try {
       await createAndDownloadFile("json");
-      toast.success("Products downloaded successfully");
+      toast.success("Matches json downloaded successfully");
     } catch (error) {
       console.error("Error downloading PDF:", error);
       toast.error(error.response?.data?.message || "Error downloading PDF");
@@ -76,16 +88,22 @@ const Match = () => {
 
       <div className="matches-container">
         <h2 className="season-heading">Season: {selectedSeason ? selectedSeason.name : "No season selected"}</h2>
-        {username === "admin" && (
-          <div className="button-container">
-            <button className="download-button" onClick={() => handleDownloadPDF()}>
-              Download PDF
-            </button>
-            <button className="download-button" onClick={() => handleDownloadJSON()}>
-              Download JSON
-            </button>
-          </div>
-        )}
+
+        <div className="button-container">
+          <button className="download-button" onClick={handleSortByDate}>
+            Sort by {sortByDate ? "Newest" : "Oldest"}
+          </button>
+          {username === "admin" && (
+            <>
+              <button className="download-button" onClick={() => handleDownloadPDF()}>
+                Download PDF
+              </button>
+              <button className="download-button" onClick={() => handleDownloadJSON()}>
+                Download JSON
+              </button>
+            </>
+          )}
+        </div>
 
         {matches.map((match) => (
           <div key={match.match_id} className="match-item" onClick={() => setSelectedMatch(match)}>

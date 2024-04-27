@@ -48,7 +48,7 @@ const Search = () => {
       {players && players.length > 0 ? (
         <div className="players-list">
           {players.map((player) => (
-            <div key={player.id} className="player-item">
+            <div key={player.player_id} className="player-item">
               <img src={footballerPhoto} alt={player.name} />
               <div>
                 <p className="player-title">

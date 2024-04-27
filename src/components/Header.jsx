@@ -31,13 +31,13 @@ const Header = ({ onLogin }) => {
                   Add
                 </Link>
               </li>
-              <li className="nav-item">
-                <Link to="/statistics" className="nav-link">
-                  Statistics
-                </Link>
-              </li>
             </>
           )}
+          <li className="nav-item">
+            <Link to="/statistics" className="nav-link">
+              Statistics
+            </Link>
+          </li>
         </ul>
       </nav>
       <div className="logout-container">
