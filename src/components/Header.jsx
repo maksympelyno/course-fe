@@ -8,6 +8,7 @@ const Header = ({ onLogin }) => {
   const handleLogout = () => {
     sessionStorage.removeItem("username");
     onLogin(false);
+    window.location.reload();
   };
 
   return (

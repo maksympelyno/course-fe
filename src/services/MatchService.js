@@ -66,7 +66,6 @@ export const deleteMatch = async (matchId) => {
 
 export const createAndDownloadFile = async (fileType) => {
   try {
-    const role = sessionStorage.getItem("username");
     let endpoint = `${API_URL}/create-pdf`;
     let fileName = "matches.pdf";
     let responseType = "application/pdf";
@@ -77,16 +76,9 @@ export const createAndDownloadFile = async (fileType) => {
       responseType = "application/json";
     }
 
-    await axios.post(endpoint, {
-      headers: {
-        Role: role.toLowerCase(),
-      },
-    });
+    await axios.post(endpoint);
     const res = await axios.get(`${API_URL}/fetch-${fileType}`, {
       responseType: "blob",
-      headers: {
-        Role: role.toLowerCase(),
-      },
     });
     const fileBlob = new Blob([res.data], {
       type: `aplication/${responseType}`,
